@@ -52,5 +52,6 @@ gem 'foundation-rails'
 gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'paperclip', '~> 4.2'
+gem 'enumerize'
 
 ruby "2.1.6"

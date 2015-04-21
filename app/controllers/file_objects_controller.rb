@@ -23,6 +23,6 @@ class FileObjectsController < ApplicationController
   private
 
   def file_objects_params
-    params.require(:file_object).permit(:file)
+    params.require(:file_object).permit(:file).merge(user: current_user)
   end
 end
