@@ -13,3 +13,9 @@ nav.top-bar data-topbar="" role="navigation"
           - else
               li = link_to 'Log in', new_user_session_path
               li = link_to 'Sign up', new_user_registration_path
+
+    ul.left
+      li.has-dropdown
+        = link_to 'Files', file_objects_path
+        ul.dropdown
+          li = link_to 'New', new_file_object_path

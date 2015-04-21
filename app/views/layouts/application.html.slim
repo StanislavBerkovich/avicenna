@@ -4,7 +4,7 @@ html lang="en"
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title == content_for?(:title) ? yield(:title) : "Untitled"
+    title == content_for?(:title) ? yield(:title) : "Avicenna"
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
@@ -15,11 +15,17 @@ html lang="en"
 
     = render 'navbar'
 
-    p.notice
-      = notice
-    p.alert
-      = alert
+    - if notice
+      div data-alert='' class='alert-box success radius'
+        = notice
+        a.close href="#"
+         | &times;
 
+    - if alert
+      div data-alert='' class='alert-box alert radius'
+        = alert
+        a.close href="#"
+          | &times;
 
     == yield
 
