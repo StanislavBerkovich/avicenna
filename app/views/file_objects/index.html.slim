@@ -1,4 +1,25 @@
 h1 Files
 
-- @file_objects.each do |file|
-  p = link_to file.file.url, file_object_path(file)
+- if can?(:create, FileObject)
+  = link_to 'New File', [:new, :file_object], class: 'button success tiny radius'
+
+table#files
+  thead
+    tr
+      th File path
+      th File name
+      th Created At
+      th State
+      th Actions
+  tbody
+    - FileObjectDecorator.decorate_collection(@file_objects).each do |file|
+      tr
+        td = link_to file.file.url, file_object_path(file)
+        td = file.name
+        td = file.created_at
+        td = file.state
+        td
+          - if can?(:test_again, file.object)
+            = button_to 'Test', polymorphic_url([:test_again, file], page: params[:page]), class: 'button info tiny radius'
+
+= will_paginate @file_objects, renderer: FoundationPagination::Rails

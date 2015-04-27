@@ -1,7 +1,10 @@
+require 'test_system'
+
 class FileObjectsController < ApplicationController
   load_and_authorize_resource except: :create
 
   def index
+    @file_objects = @file_objects.page(params[:page]).per_page(TABLES_PER_PAGE).sort_by_creation
   end
 
   def show
@@ -9,7 +12,8 @@ class FileObjectsController < ApplicationController
   end
 
   def create
-    FileObject.create(file_objects_params)
+    file = FileObject.create(file_objects_params)
+    TestSystem.new(file).check_file
     redirect_to file_objects_path
   end
 
@@ -18,6 +22,11 @@ class FileObjectsController < ApplicationController
 
   def destroy
     @file_obejct.destroy
+  end
+
+  def test_again
+    TestSystem.new(@file_object).check_file
+    redirect_to file_objects_path(page: params[:page])
   end
 
   private

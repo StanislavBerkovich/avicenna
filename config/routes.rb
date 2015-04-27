@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :file_objects, except: [:update, :edit]
+  resources :file_objects, except: [:update, :edit] do
+    member do
+      post :test_again
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

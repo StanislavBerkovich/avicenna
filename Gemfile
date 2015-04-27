@@ -53,5 +53,9 @@ gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'paperclip', '~> 4.2'
 gem 'enumerize'
+gem 'aasm'
+gem 'foundation-icons-sass-rails'
+gem 'draper'
+gem 'will_paginate-foundation'
 
 ruby "2.1.6"

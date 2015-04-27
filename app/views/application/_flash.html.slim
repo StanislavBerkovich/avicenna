@@ -1,0 +1,11 @@
+- if notice
+  div data-alert='' class='alert-box success radius'
+    = notice
+    a.close href="#"
+      | &times;
+
+- if alert
+  div data-alert='' class='alert-box alert radius'
+    = alert
+    a.close href="#"
+      | &times;

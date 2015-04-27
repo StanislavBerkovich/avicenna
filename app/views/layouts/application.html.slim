@@ -12,20 +12,11 @@ html lang="en"
     = csrf_meta_tag
 
   body
-
     = render 'navbar'
 
-    - if notice
-      div data-alert='' class='alert-box success radius'
-        = notice
-        a.close href="#"
-         | &times;
+    .row
+      = render 'flash'
 
-    - if alert
-      div data-alert='' class='alert-box alert radius'
-        = alert
-        a.close href="#"
-          | &times;
-
-    == yield
+    .row
+      == yield
 
